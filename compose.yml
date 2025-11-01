@@ -1,0 +1,28 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cinelog:latest
+    container_name: cinelog-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - cinelog-network
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    image: cinelog-test:latest
+    container_name: cinelog-test
+    profiles:
+      - testing
+    networks:
+      - cinelog-network
+
+networks:
+  cinelog-network:
+    driver: bridge
+    name: cinelog-network
