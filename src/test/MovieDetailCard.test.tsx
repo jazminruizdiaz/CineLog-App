@@ -110,12 +110,12 @@ describe("MovieDetailPage", () => {
   it("updates reviews correctly", () => {
     render(
       <MemoryRouter initialEntries={["/movie/1"]}>
-        <AuthContext.Provider value={mockAuthCtx as any}>
-          <MoviesContext.Provider value={mockMoviesCtx as any}>
+        <AuthContext.Provider value={mockAuthCtx}>
+          <MoviesContext.Provider value={mockMoviesCtx}>
             <ReviewsContext.Provider
               value={{ reviews: mockReviews, setReviews: mockSetReviews }}
             >
-              <WatchlistContext.Provider value={mockWatchlistCtx as any}>
+              <WatchlistContext.Provider value={mockWatchlistCtx}>
                 <MovieDetailPage />
               </WatchlistContext.Provider>
             </ReviewsContext.Provider>
