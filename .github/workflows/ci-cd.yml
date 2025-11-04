@@ -3,7 +3,7 @@ name: CineLog Workflow
 on:
   workflow_dispatch:
   push:
-    branches: ["main", "develop"]
+    branches: ["main"]
   pull_request:
     branches: ["main", "develop"]
 
