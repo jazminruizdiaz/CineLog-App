@@ -3,10 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: cinelog:latest
+    image: ${IMAGE_NAME:-cinelog}:${IMAGE_TAG:-latest}
     container_name: cinelog-frontend
     ports:
-      - "3000:80"
+      - "${HOST_PORT:-3000}:${CONTAINER_PORT:-80}"
     networks:
       - cinelog-network
 
@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: test
-    image: cinelog-test:latest
+    image: ${IMAGE_NAME:-cinelog}-test:${IMAGE_TAG:-latest}
     container_name: cinelog-test
     profiles:
       - testing
@@ -25,4 +25,4 @@ services:
 networks:
   cinelog-network:
     driver: bridge
-    name: cinelog-network
+    name: ${NETWORK_NAME:-cinelog-network}
